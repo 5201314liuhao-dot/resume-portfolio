@@ -158,6 +158,25 @@ function AutomationMark() {
   );
 }
 
+function HeroSystemCore() {
+  return (
+    <svg viewBox="0 0 260 260" role="img" aria-label="AI SRE 系统核心图形">
+      <circle className="coreRing coreRingOuter" cx="130" cy="130" r="92" />
+      <circle className="coreRing coreRingMid" cx="130" cy="130" r="62" />
+      <circle className="coreRing coreRingInner" cx="130" cy="130" r="28" />
+      <path className="coreArc" d="M130 38a92 92 0 0 1 88 66" />
+      <path className="coreArc coreArcAlt" d="M42 156a92 92 0 0 1 55-109" />
+      <path d="M130 68v36M130 156v36M68 130h36M156 130h36" />
+      <path d="M84 84l28 28M176 84l-28 28M84 176l28-28M176 176l-28-28" />
+      <circle cx="130" cy="130" r="8" />
+      <circle cx="130" cy="68" r="5" />
+      <circle cx="192" cy="130" r="5" />
+      <circle cx="130" cy="192" r="5" />
+      <circle cx="68" cy="130" r="5" />
+    </svg>
+  );
+}
+
 const technicalMarks = {
   openclaw: OpenClawMark,
   rag: RagMark,
@@ -219,18 +238,53 @@ function App() {
         </nav>
 
         <div className="heroContent shell">
-          <p className="kicker revealItem heroReveal" data-reveal>SRE / AI Engineering / RAG / DevOps</p>
-          <h1 className="revealItem heroReveal" data-reveal style={{ '--reveal-delay': '90ms' }}>刘浩</h1>
-          <h2 className="heroTitle revealItem heroReveal" data-reveal style={{ '--reveal-delay': '160ms' }}>用 AI 工程化提升系统稳定性、质量效率与知识服务体验。</h2>
-          <div className="heroBottom revealItem heroReveal" data-reveal style={{ '--reveal-delay': '240ms' }}>
-            <p>
-              6年+云计算、大数据平台稳定性保障、运维开发、测试开发及 AI 工程化落地经验。长期参与阿里云 MaxCompute 相关项目，近期参与 OpenClaw、Skill、RAG 深度检索和文档咨询问答系统建设。
-            </p>
-            <div className="heroActions">
-              <a className="primaryLink" href="#projects">查看核心项目 <ArrowUpRight size={18} /></a>
-              <a className="ghostLink" href="mailto:1278496392@qq.com">1278496392@qq.com</a>
+          <div className="heroCopy">
+            <p className="kicker revealItem heroReveal" data-reveal>SRE / AI Engineering / RAG / DevOps</p>
+            <h1 className="revealItem heroReveal" data-reveal style={{ '--reveal-delay': '90ms' }}>刘浩</h1>
+            <h2 className="heroTitle revealItem heroReveal" data-reveal style={{ '--reveal-delay': '160ms' }}>用 AI 工程化提升系统稳定性、质量效率与知识服务体验。</h2>
+            <div className="heroBottom revealItem heroReveal" data-reveal style={{ '--reveal-delay': '240ms' }}>
+              <p>
+                6年+云计算、大数据平台稳定性保障、运维开发、测试开发及 AI 工程化落地经验。长期参与阿里云 MaxCompute 相关项目，近期参与 OpenClaw、Skill、RAG 深度检索和文档咨询问答系统建设。
+              </p>
+              <div className="heroActions">
+                <a className="primaryLink" href="#projects">查看核心项目 <ArrowUpRight size={18} /></a>
+                <a className="ghostLink" href="mailto:1278496392@qq.com">1278496392@qq.com</a>
+              </div>
             </div>
           </div>
+
+          <aside className="heroInterface revealItem heroReveal" data-reveal style={{ '--reveal-delay': '320ms' }} aria-label="AI 工程化与 SRE 系统界面">
+            <div className="interfaceHeader">
+              <span>AI/SRE COMMAND</span>
+              <strong>ONLINE</strong>
+            </div>
+            <div className="corePanel">
+              <HeroSystemCore />
+              <div className="nodeLabel nodeOpenClaw">OpenClaw</div>
+              <div className="nodeLabel nodeRag">RAG</div>
+              <div className="nodeLabel nodeSre">SRE</div>
+              <div className="nodeLabel nodeCicd">CI/CD</div>
+            </div>
+            <div className="signalGrid" aria-hidden="true">
+              <div>
+                <span>RETRIEVAL</span>
+                <i style={{ '--signal': '78%' }} />
+              </div>
+              <div>
+                <span>INCIDENT</span>
+                <i style={{ '--signal': '42%' }} />
+              </div>
+              <div>
+                <span>AUTOMATION</span>
+                <i style={{ '--signal': '88%' }} />
+              </div>
+            </div>
+            <div className="interfaceFooter">
+              <span>Skill Agent</span>
+              <span>Trace Monitor</span>
+              <span>Quality Gate</span>
+            </div>
+          </aside>
         </div>
       </section>
 
