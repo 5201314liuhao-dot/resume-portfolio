@@ -226,6 +226,33 @@ function App() {
     <main>
       <section className="hero" id="home">
         <div className="mesh" />
+        <div className="heroDataLayer" aria-hidden="true">
+          <div className="dataRail dataRailLeft">
+            <span>TRACE-1842</span>
+            <span>RAG::RECALL</span>
+            <span>SRE::SIGNAL</span>
+            <span>AGENT::SKILL</span>
+          </div>
+          <div className="dataRail dataRailRight">
+            <span>QGATE 98.4</span>
+            <span>MTTR -30%</span>
+            <span>NODE 04</span>
+            <span>OPS READY</span>
+          </div>
+          <svg className="networkMap" viewBox="0 0 760 520">
+            <path d="M82 292L190 180l154 58 126-96 208 118" />
+            <path d="M118 382l188-120 138 74 178-182" />
+            <circle cx="82" cy="292" r="6" />
+            <circle cx="190" cy="180" r="5" />
+            <circle cx="344" cy="238" r="8" />
+            <circle cx="470" cy="142" r="5" />
+            <circle cx="678" cy="260" r="7" />
+            <circle cx="118" cy="382" r="5" />
+            <circle cx="306" cy="262" r="5" />
+            <circle cx="444" cy="336" r="6" />
+            <circle cx="622" cy="154" r="5" />
+          </svg>
+        </div>
         <nav className="nav shell">
           <a className="brand" href="#home" aria-label="回到首页">LIU HAO</a>
           <div className="navLinks" aria-label="页面导航">
@@ -283,6 +310,11 @@ function App() {
               <span>Skill Agent</span>
               <span>Trace Monitor</span>
               <span>Quality Gate</span>
+            </div>
+            <div className="terminalStack" aria-hidden="true">
+              <span>agent.skill.load(OpenClaw)</span>
+              <span>rag.retrieve.rank.context</span>
+              <span>sre.trace.reduce_noise</span>
             </div>
           </aside>
         </div>

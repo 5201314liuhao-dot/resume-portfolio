@@ -115,13 +115,71 @@ main > section {
 .mesh {
   position: absolute;
   inset: 0;
-  opacity: 0.34;
+  opacity: 0.48;
   background-image:
-    linear-gradient(rgba(133, 243, 210, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(133, 243, 210, 0.08) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(rgba(133, 243, 210, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(133, 243, 210, 0.11) 1px, transparent 1px),
+    linear-gradient(rgba(238, 246, 243, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 246, 243, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px, 72px 72px, 18px 18px, 18px 18px;
   mask-image: linear-gradient(90deg, #000, transparent 78%);
   z-index: -2;
+}
+
+.heroDataLayer {
+  position: absolute;
+  inset: 88px 24px 24px;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dataRail {
+  position: absolute;
+  top: 12%;
+  display: grid;
+  gap: 9px;
+  width: 142px;
+  color: rgba(133, 243, 210, 0.64);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dataRail span {
+  padding: 8px 10px;
+  border: 1px solid rgba(133, 243, 210, 0.16);
+  background: linear-gradient(90deg, rgba(133, 243, 210, 0.08), transparent);
+  box-shadow: inset 0 0 18px rgba(133, 243, 210, 0.03);
+}
+
+.dataRailLeft { left: 18px; }
+.dataRailRight { right: 18px; top: 18%; text-align: right; }
+
+.networkMap {
+  position: absolute;
+  right: 7%;
+  top: 13%;
+  width: min(55vw, 760px);
+  height: min(44vw, 520px);
+  opacity: 0.42;
+  fill: none;
+  stroke: rgba(133, 243, 210, 0.64);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 18px rgba(133, 243, 210, 0.14));
+}
+
+.networkMap path {
+  stroke-dasharray: 8 12;
+  animation: networkDash 14s linear infinite;
+}
+
+.networkMap circle {
+  fill: rgba(133, 243, 210, 0.28);
+  stroke: rgba(238, 246, 243, 0.74);
+  animation: nodePulse 3.8s ease-in-out infinite;
 }
 
 .nav {
@@ -277,6 +335,10 @@ h1 {
   overflow: hidden;
 }
 
+.heroInterface {
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+}
+
 .heroInterface::before,
 .heroInterface::after {
   content: "";
@@ -319,6 +381,11 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.interfaceHeader {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(133, 243, 210, 0.14);
+}
+
 .interfaceHeader strong {
   color: #85f3d2;
   font-size: 12px;
@@ -332,6 +399,17 @@ h1 {
   display: grid;
   place-items: center;
   margin: 34px 0 26px;
+}
+
+.corePanel::before {
+  content: "";
+  position: absolute;
+  inset: 7% 10%;
+  border: 1px solid rgba(133, 243, 210, 0.08);
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(133, 243, 210, 0.13) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(133, 243, 210, 0.13) 50%, transparent 51%);
+  opacity: 0.52;
 }
 
 .corePanel svg {
@@ -423,6 +501,27 @@ h1 {
   background: rgba(238, 246, 243, 0.04);
 }
 
+.terminalStack {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 7px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(133, 243, 210, 0.12);
+}
+
+.terminalStack span {
+  display: block;
+  overflow: hidden;
+  color: rgba(133, 243, 210, 0.66);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @keyframes coreSpin {
   to { transform: rotate(360deg); }
 }
@@ -431,6 +530,15 @@ h1 {
   0%, 100% { transform: translateY(-45%) rotate(-8deg); opacity: 0; }
   42%, 60% { opacity: 1; }
   70% { transform: translateY(240%) rotate(-8deg); opacity: 0; }
+}
+
+@keyframes networkDash {
+  to { stroke-dashoffset: -180; }
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.52; }
+  50% { opacity: 1; }
 }
 
 .profile,
@@ -1076,6 +1184,16 @@ h1 {
 
 @media (max-width: 1280px) {
   .shell { width: min(1120px, calc(100vw - 64px)); }
+  .dataRail {
+    display: none;
+  }
+  .networkMap {
+    right: -8%;
+    top: 10%;
+    width: 76vw;
+    height: 52vw;
+    opacity: 0.28;
+  }
   .heroContent {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1144,6 +1262,16 @@ h1 {
 
 @media (max-width: 560px) {
   .shell { width: calc(100% - 28px); }
+  .heroDataLayer {
+    inset: 110px 14px 18px;
+  }
+  .networkMap {
+    top: 6%;
+    right: -42%;
+    width: 130vw;
+    height: 82vw;
+    opacity: 0.16;
+  }
   .hero::after {
     background:
       linear-gradient(90deg, rgba(2, 4, 10, 0.76), rgba(2, 4, 10, 0.44)),
@@ -1183,6 +1311,9 @@ h1 {
   .interfaceFooter span {
     flex: 1 1 auto;
     text-align: center;
+  }
+  .terminalStack {
+    display: none;
   }
   .heroBottom p,
   .profilePanel > p,
@@ -1240,7 +1371,9 @@ h1 {
 
   .coreRingOuter,
   .coreRingMid,
-  .heroInterface::after {
+  .heroInterface::after,
+  .networkMap path,
+  .networkMap circle {
     animation: none !important;
   }
 }
