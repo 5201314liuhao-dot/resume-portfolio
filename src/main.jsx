@@ -97,12 +97,9 @@ function App() {
   return (
     <main>
       <section className="hero" id="home">
-        <video className="heroVideo" autoPlay muted loop playsInline poster="https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1800&q=80">
-          <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-        </video>
         <div className="mesh" />
         <nav className="nav shell">
-          <a className="brand" href="#home">LIU HAO</a>
+          <a className="brand" href="#home" aria-label="回到首页">LIU HAO</a>
           <div className="navLinks" aria-label="页面导航">
             <a href="#profile">Profile</a>
             <a href="#projects">Projects</a>

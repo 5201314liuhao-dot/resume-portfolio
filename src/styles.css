@@ -20,6 +20,11 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 section { scroll-margin-top: 104px; }
 
+a:focus-visible {
+  outline: 2px solid rgba(133, 243, 210, 0.86);
+  outline-offset: 4px;
+}
+
 main {
   position: relative;
   background:
@@ -62,10 +67,6 @@ main > section {
   background:
     linear-gradient(90deg, rgba(2, 4, 10, 0.58), rgba(2, 4, 10, 0.22) 54%, rgba(2, 4, 10, 0.5)),
     url("/deep-space-nebula.png") center top / cover fixed;
-}
-
-.heroVideo {
-  display: none;
 }
 
 .hero::after {
@@ -120,6 +121,23 @@ main > section {
 }
 
 .navLinks a:hover { color: #eef6f3; }
+
+.navLinks a,
+.contactButton,
+.primaryLink,
+.ghostLink,
+.mailLink {
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.contactButton:hover,
+.primaryLink:hover,
+.ghostLink:hover,
+.mailLink:hover {
+  transform: translateY(-1px);
+  border-color: rgba(133, 243, 210, 0.5);
+  background: rgba(133, 243, 210, 0.13);
+}
 
 .contactButton,
 .primaryLink,
@@ -560,6 +578,17 @@ h1 {
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 18px 60px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(10px);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.projectCard:hover,
+.skillCard:hover,
+.timelineItem:hover {
+  transform: translateY(-3px);
+  border-color: rgba(133, 243, 210, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
 .projectTop {
@@ -748,4 +777,15 @@ h1 {
   .projectCard h3 { font-size: 27px; }
   .contactRow { width: 100%; flex-direction: column; }
   .mailLink { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
