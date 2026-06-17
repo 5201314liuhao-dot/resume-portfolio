@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowUpRight,
@@ -93,7 +93,37 @@ function handleCardPointerMove(event) {
   event.currentTarget.style.setProperty('--glow-x', `${x}%`);
   event.currentTarget.style.setProperty('--glow-y', `${y}%`);
 }
+
+function useScrollReveal() {
+  useEffect(() => {
+    const items = document.querySelectorAll('[data-reveal]');
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('isVisible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('isVisible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -14% 0px', threshold: 0.18 },
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+}
+
 function App() {
+  useScrollReveal();
+
   return (
     <main>
       <section className="hero" id="home">
@@ -126,7 +156,7 @@ function App() {
       </section>
 
       <section className="profile shell" id="profile">
-        <div className="profilePanel">
+        <div className="profilePanel revealItem revealProfile" data-reveal>
           <div className="profileHeader">
             <p className="sectionLabel">Profile</p>
             <h2>高级运维开发工程师 / SRE / AI 工程化实践者</h2>
@@ -135,15 +165,20 @@ function App() {
             工作覆盖分布式集群自动化运维、故障排查、DevOps 流程建设、自动化测试平台、AI 智能归因、RAG 知识库和文档问答系统等方向，重点解决业务流程中信息检索难、故障定位慢、知识复用弱、测试误报率高等问题。
           </p>
           <div className="infoGrid">
-            <span>西安交通大学 / 计算机科学与技术 / 本科</span>
-            <span>求职意向：SRE / 运维开发 / AI 测试开发</span>
-            <span>技术栈：Python / Shell / Jenkins / Docker / K8s</span>
-            <span>AI：OpenClaw / RAG / Skill / Qwen3-VL</span>
+            <span className="revealChild">西安交通大学 / 计算机科学与技术 / 本科</span>
+            <span className="revealChild">求职意向：SRE / 运维开发 / AI 测试开发</span>
+            <span className="revealChild">技术栈：Python / Shell / Jenkins / Docker / K8s</span>
+            <span className="revealChild">AI：OpenClaw / RAG / Skill / Qwen3-VL</span>
           </div>
         </div>
         <div className="metricGrid">
-          {metrics.map((item) => (
-            <div className="metric" key={item.label}>
+          {metrics.map((item, index) => (
+            <div
+              className="metric revealItem revealMetric"
+              data-reveal
+              key={item.label}
+              style={{ '--reveal-delay': `${index * 90 + 140}ms` }}
+            >
               <strong>{item.value}</strong>
               <span>{item.label}</span>
             </div>
