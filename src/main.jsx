@@ -25,10 +25,22 @@ const metrics = [
 ];
 
 const focusAreas = [
-  'OpenClaw platform setup and Skill creation',
-  'RAG deep retrieval and document Q&A systems',
-  'MaxCompute reliability and private-cloud support',
-  'Pytest + Playwright + POM automation architecture',
+  {
+    title: 'OpenClaw platform setup and Skill creation',
+    visual: 'openclaw',
+  },
+  {
+    title: 'RAG deep retrieval and document Q&A systems',
+    visual: 'rag',
+  },
+  {
+    title: 'MaxCompute reliability and private-cloud support',
+    visual: 'maxcompute',
+  },
+  {
+    title: 'Pytest + Playwright + POM automation architecture',
+    visual: 'automation',
+  },
 ];
 
 const projects = [
@@ -40,6 +52,7 @@ const projects = [
       '参与公司内部 OpenClaw 平台搭建，围绕业务问题创建 Skill 能力，并建设 RAG 深度检索与文档咨询问答系统，将分散文档转化为可检索、可追问、可复用的知识服务。',
     points: ['OpenClaw 平台接入', 'Skill / Agent 能力沉淀', '文档解析、召回、重排与问答增强'],
     accent: '01',
+    visual: 'openclaw',
   },
   {
     icon: Bot,
@@ -49,6 +62,7 @@ const projects = [
       '主导 Pytest + Playwright + POM 分层自动化体系，通过 Docker + Jenkins 实现分布式执行，并引入 Qwen3-VL 进行失败归因、视觉走查和国际化一致性校验。',
     points: ['失败归因 Agent', 'Trace 全程录制', 'Prompt 资产沉淀'],
     accent: '02',
+    visual: 'automation',
   },
   {
     icon: Database,
@@ -58,6 +72,7 @@ const projects = [
       '负责专有云环境下 MaxCompute 相关模块稳定性保障，基于 Python/Shell 建设自动化巡检、日志收集、安全审计和故障处理能力。',
     points: ['故障率降低约 30%', 'PyODPS 数据校验', '客户工单与疑难问题闭环'],
     accent: '03',
+    visual: 'maxcompute',
   },
   {
     icon: Workflow,
@@ -67,6 +82,7 @@ const projects = [
       '构建 Jenkins + GitLab 质量门禁与持续集成流程，支持代码构建、测试执行、报告回收和质量问题复盘，提升研发交付效率。',
     points: ['Jenkins + GitLab', '自动化质量门禁', '回归报告分析'],
     accent: '04',
+    visual: 'rag',
   },
 ];
 
@@ -85,6 +101,69 @@ const timeline = [
   { time: '2021.06 - 2024.08', title: 'MaxCompute 稳定性保障', text: '负责专有云环境下大数据平台运维开发、故障排查、客户支持与稳定性优化。' },
   { time: '2018.04 - 2020.11', title: 'DevOps CI/CD 质量门禁', text: '建设 Jenkins + GitLab 自动化门禁、回归报告分析与持续集成流程。' },
 ];
+
+function OpenClawMark() {
+  return (
+    <svg viewBox="0 0 120 120" role="img" aria-label="OpenClaw 单色龙虾图形">
+      <path d="M54 50c-12 2-21 12-21 25 0 17 12 28 27 28s27-11 27-28c0-13-9-23-21-25" />
+      <path d="M42 62h36M42 76h36M48 90h24" />
+      <path d="M46 45c-13-5-21-15-20-27 10 0 19 7 23 18" />
+      <path d="M74 45c13-5 21-15 20-27-10 0-19 7-23 18" />
+      <path d="M49 36c-8-13-19-18-32-15 2 12 10 21 23 23" />
+      <path d="M71 36c8-13 19-18 32-15-2 12-10 21-23 23" />
+      <path d="M53 50V27M67 50V27" />
+      <path d="M49 25c-4-7-10-11-18-12M71 25c4-7 10-11 18-12" />
+      <circle cx="53" cy="45" r="2" />
+      <circle cx="67" cy="45" r="2" />
+    </svg>
+  );
+}
+
+function RagMark() {
+  return (
+    <svg viewBox="0 0 120 120" role="img" aria-label="RAG 检索节点图形">
+      <circle cx="35" cy="34" r="15" />
+      <circle cx="83" cy="42" r="12" />
+      <circle cx="52" cy="82" r="17" />
+      <path d="M49 38l22 3M43 47l9 19M75 52L63 70" />
+      <path d="M29 34h12M35 28v12M77 42h12M44 82h16" />
+      <path d="M23 97h74" />
+    </svg>
+  );
+}
+
+function MaxComputeMark() {
+  return (
+    <svg viewBox="0 0 120 120" role="img" aria-label="MaxCompute 数据网格图形">
+      <path d="M20 37h80v50H20z" />
+      <path d="M20 53h80M20 70h80M40 37v50M60 37v50M80 37v50" />
+      <path d="M33 25h54l13 12H20z" />
+      <path d="M32 98h56" />
+      <circle cx="40" cy="53" r="2" />
+      <circle cx="60" cy="70" r="2" />
+      <circle cx="80" cy="53" r="2" />
+    </svg>
+  );
+}
+
+function AutomationMark() {
+  return (
+    <svg viewBox="0 0 120 120" role="img" aria-label="自动化测试轨道图形">
+      <path d="M22 62c18-28 58-28 76 0-18 28-58 28-76 0z" />
+      <circle cx="60" cy="62" r="16" />
+      <path d="M60 30v16M60 78v16M28 62h16M76 62h16" />
+      <path d="M43 29l-9 9M77 29l9 9M43 95l-9-9M77 95l9-9" />
+      <path d="M54 62l5 5 10-12" />
+    </svg>
+  );
+}
+
+const technicalMarks = {
+  openclaw: OpenClawMark,
+  rag: RagMark,
+  maxcompute: MaxComputeMark,
+  automation: AutomationMark,
+};
 
 function handleCardPointerMove(event) {
   const rect = event.currentTarget.getBoundingClientRect();
@@ -140,10 +219,10 @@ function App() {
         </nav>
 
         <div className="heroContent shell">
-          <p className="kicker">SRE / AI Engineering / RAG / DevOps</p>
-          <h1>刘浩</h1>
-          <h2 className="heroTitle">用 AI 工程化提升系统稳定性、质量效率与知识服务体验。</h2>
-          <div className="heroBottom">
+          <p className="kicker revealItem heroReveal" data-reveal>SRE / AI Engineering / RAG / DevOps</p>
+          <h1 className="revealItem heroReveal" data-reveal style={{ '--reveal-delay': '90ms' }}>刘浩</h1>
+          <h2 className="heroTitle revealItem heroReveal" data-reveal style={{ '--reveal-delay': '160ms' }}>用 AI 工程化提升系统稳定性、质量效率与知识服务体验。</h2>
+          <div className="heroBottom revealItem heroReveal" data-reveal style={{ '--reveal-delay': '240ms' }}>
             <p>
               6年+云计算、大数据平台稳定性保障、运维开发、测试开发及 AI 工程化落地经验。长期参与阿里云 MaxCompute 相关项目，近期参与 OpenClaw、Skill、RAG 深度检索和文档咨询问答系统建设。
             </p>
@@ -187,7 +266,7 @@ function App() {
       </section>
 
       <section className="focus shell" aria-label="核心方向">
-        <div className="sectionHead">
+        <div className="sectionHead revealItem revealSectionHead" data-reveal>
           <div>
             <p className="sectionLabel">Focus</p>
             <h2>当前能力主线</h2>
@@ -195,17 +274,29 @@ function App() {
           <p>围绕 AI 工程化、智能运维和企业知识检索，把技术能力转化为可复用的业务效率工具。</p>
         </div>
         <div className="focusGrid">
-          {focusAreas.map((item, index) => (
-            <article className="focusItem magicBorderCard" key={item} onMouseMove={handleCardPointerMove}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <p>{item}</p>
+          {focusAreas.map(({ title, visual }, index) => {
+            const Visual = technicalMarks[visual];
+            return (
+            <article
+              className="focusItem magicBorderCard revealItem"
+              data-reveal
+              key={title}
+              onMouseMove={handleCardPointerMove}
+              style={{ '--reveal-delay': `${index * 90}ms` }}
+            >
+              <div className="focusItemTop">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div className="techVisual">{Visual && <Visual />}</div>
+              </div>
+              <p>{title}</p>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
       <section className="projects shell" id="projects">
-        <div className="sectionHead">
+        <div className="sectionHead revealItem revealSectionHead" data-reveal>
           <div>
             <p className="sectionLabel">Selected Projects</p>
             <h2>核心项目经验</h2>
@@ -213,31 +304,45 @@ function App() {
           <p>项目经验占网站表达的主体，优先呈现最近半年 AI 工程化与 RAG 方向。</p>
         </div>
         <div className="projectGrid">
-          {projects.map(({ icon: Icon, eyebrow, title, description, points, accent }) => (
-            <article className="projectCard" key={title}>
-              <div className="projectTop">
-                <Icon size={30} />
-                <span>{accent}</span>
-              </div>
-              <p className="projectEyebrow">{eyebrow}</p>
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <ul>
-                {points.map((point) => <li key={point}><CheckCircle2 size={16} />{point}</li>)}
-              </ul>
-            </article>
-          ))}
+          {projects.map(({ icon: Icon, eyebrow, title, description, points, accent, visual }, index) => {
+            const Visual = technicalMarks[visual];
+            return (
+              <article
+                className="projectCard revealItem"
+                data-reveal
+                key={title}
+                style={{ '--reveal-delay': `${index * 100}ms` }}
+              >
+                <div className="projectTop">
+                  <Icon size={30} />
+                  <span>{accent}</span>
+                </div>
+                <div className="projectVisual" aria-hidden="true">{Visual && <Visual />}</div>
+                <p className="projectEyebrow">{eyebrow}</p>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <ul>
+                  {points.map((point) => <li key={point}><CheckCircle2 size={16} />{point}</li>)}
+                </ul>
+              </article>
+            );
+          })}
         </div>
       </section>
 
       <section className="skills shell" id="skills">
-        <div className="sectionHead compact">
+        <div className="sectionHead compact revealItem revealSectionHead" data-reveal>
           <p className="sectionLabel">Capabilities</p>
           <h2>专业技能矩阵</h2>
         </div>
         <div className="skillGrid">
-          {skills.map(({ icon: Icon, title, text }) => (
-            <article className="skillCard" key={title}>
+          {skills.map(({ icon: Icon, title, text }, index) => (
+            <article
+              className="skillCard revealItem"
+              data-reveal
+              key={title}
+              style={{ '--reveal-delay': `${index * 75}ms` }}
+            >
               <Icon size={28} />
               <h3>{title}</h3>
               <p>{text}</p>
@@ -247,13 +352,18 @@ function App() {
       </section>
 
       <section className="timeline shell">
-        <div className="sectionHead compact">
+        <div className="sectionHead compact revealItem revealSectionHead" data-reveal>
           <p className="sectionLabel">Experience</p>
           <h2>经历时间线</h2>
         </div>
         <div className="timelineList">
-          {timeline.map((item) => (
-            <article className="timelineItem" key={item.title}>
+          {timeline.map((item, index) => (
+            <article
+              className="timelineItem revealItem"
+              data-reveal
+              key={item.title}
+              style={{ '--reveal-delay': `${index * 90}ms` }}
+            >
               <time>{item.time}</time>
               <div>
                 <h3>{item.title}</h3>
@@ -265,7 +375,7 @@ function App() {
       </section>
 
       <section className="closing" id="contact">
-        <div className="closingInner shell">
+        <div className="closingInner shell revealItem revealClosing" data-reveal>
           <Cpu size={36} />
           <p className="sectionLabel">Contact</p>
           <h2>寻找 SRE、AI 工程化、RAG 应用与智能测试平台方向机会。</h2>
