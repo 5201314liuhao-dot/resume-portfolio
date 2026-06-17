@@ -319,7 +319,7 @@ h1 {
 
 .heroInterface {
   position: relative;
-  min-height: 560px;
+  min-height: 640px;
   padding: 26px;
   border: 1px solid rgba(133, 243, 210, 0.2);
   background:
@@ -386,19 +386,148 @@ h1 {
   border-bottom: 1px solid rgba(133, 243, 210, 0.14);
 }
 
+.interfaceHeader div {
+  display: grid;
+  gap: 5px;
+}
+
+.interfaceHeader small {
+  color: rgba(238, 246, 243, 0.38);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
 .interfaceHeader strong {
   color: #85f3d2;
   font-size: 12px;
   font-weight: 650;
 }
 
+.commandStats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0 18px;
+}
+
+.commandStats div {
+  min-height: 62px;
+  padding: 12px;
+  border: 1px solid rgba(133, 243, 210, 0.14);
+  background:
+    linear-gradient(135deg, rgba(133, 243, 210, 0.08), transparent 58%),
+    rgba(238, 246, 243, 0.025);
+}
+
+.commandStats span,
+.moduleTile span,
+.miniPanel span {
+  display: block;
+  color: rgba(238, 246, 243, 0.48);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.commandStats strong {
+  display: block;
+  margin-top: 8px;
+  color: #eef6f3;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 650;
+}
+
+.commandDeck {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.72fr 1.18fr 0.72fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.moduleStack,
+.insightStack {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+
+.moduleTile,
+.miniPanel {
+  position: relative;
+  overflow: hidden;
+  padding: 14px;
+  border: 1px solid rgba(133, 243, 210, 0.14);
+  background:
+    linear-gradient(90deg, rgba(133, 243, 210, 0.07), transparent),
+    rgba(3, 12, 20, 0.68);
+}
+
+.moduleTile::before,
+.miniPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: rgba(133, 243, 210, 0.54);
+  opacity: 0.34;
+}
+
+.moduleTile.active {
+  border-color: rgba(133, 243, 210, 0.34);
+  box-shadow: inset 0 0 28px rgba(133, 243, 210, 0.045);
+}
+
+.moduleTile strong,
+.miniPanel strong {
+  display: block;
+  margin-top: 10px;
+  color: rgba(238, 246, 243, 0.86);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.moduleTile p {
+  margin: 8px 0 0;
+  color: rgba(238, 246, 243, 0.42);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.miniPanel i {
+  position: relative;
+  display: block;
+  height: 7px;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(133, 243, 210, 0.14);
+  background: rgba(238, 246, 243, 0.035);
+}
+
+.miniPanel i::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--signal);
+  background: linear-gradient(90deg, rgba(133, 243, 210, 0.2), rgba(133, 243, 210, 0.78));
+}
+
 .corePanel {
   position: relative;
   z-index: 1;
-  min-height: 320px;
+  min-height: 300px;
   display: grid;
   place-items: center;
-  margin: 34px 0 26px;
+  margin: 0;
+  border: 1px solid rgba(133, 243, 210, 0.12);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(133, 243, 210, 0.09), transparent 48%),
+    rgba(238, 246, 243, 0.018);
 }
 
 .corePanel::before {
@@ -457,7 +586,10 @@ h1 {
   z-index: 1;
   display: grid;
   gap: 12px;
-  margin-bottom: 28px;
+  margin: 18px 0 18px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(133, 243, 210, 0.1);
+  border-bottom: 1px solid rgba(133, 243, 210, 0.1);
 }
 
 .signalGrid div {
@@ -1200,12 +1332,11 @@ h1 {
     align-content: center;
   }
   .heroInterface {
-    min-height: 430px;
+    min-height: 560px;
     width: min(100%, 720px);
   }
   .corePanel {
     min-height: 240px;
-    margin: 24px 0 20px;
   }
   .corePanel svg {
     width: min(58%, 260px);
@@ -1229,8 +1360,15 @@ h1 {
   .contactButton { min-height: 40px; padding: 0 14px; }
   .heroContent { min-height: 100vh; padding: 142px 0 86px; }
   .heroInterface {
-    min-height: 390px;
+    min-height: 620px;
     padding: 22px;
+  }
+  .commandDeck {
+    grid-template-columns: 1fr;
+  }
+  .moduleStack,
+  .insightStack {
+    grid-template-columns: repeat(2, 1fr);
   }
   .signalGrid div {
     grid-template-columns: 100px 1fr;
@@ -1286,15 +1424,21 @@ h1 {
   .heroTitle { font-size: 34px; line-height: 1.12; margin-bottom: 30px; }
   .heroBottom { gap: 24px; }
   .heroInterface {
-    min-height: 360px;
+    min-height: auto;
     padding: 18px;
+  }
+  .commandStats {
+    grid-template-columns: 1fr;
+  }
+  .moduleStack,
+  .insightStack {
+    grid-template-columns: 1fr;
   }
   .heroInterface::before {
     inset: 10px;
   }
   .corePanel {
     min-height: 210px;
-    margin: 20px 0 18px;
   }
   .corePanel svg {
     width: min(70%, 220px);

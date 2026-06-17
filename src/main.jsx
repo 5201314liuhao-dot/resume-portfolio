@@ -282,29 +282,54 @@ function App() {
 
           <aside className="heroInterface revealItem heroReveal" data-reveal style={{ '--reveal-delay': '320ms' }} aria-label="AI 工程化与 SRE 系统界面">
             <div className="interfaceHeader">
-              <span>AI/SRE COMMAND</span>
+              <div>
+                <span>AI/SRE COMMAND</span>
+                <small>Mission control for reliability and knowledge systems</small>
+              </div>
               <strong>ONLINE</strong>
             </div>
-            <div className="corePanel">
-              <HeroSystemCore />
-              <div className="nodeLabel nodeOpenClaw">OpenClaw</div>
-              <div className="nodeLabel nodeRag">RAG</div>
-              <div className="nodeLabel nodeSre">SRE</div>
-              <div className="nodeLabel nodeCicd">CI/CD</div>
+            <div className="commandStats" aria-hidden="true">
+              <div><span>MTTR</span><strong>-30%</strong></div>
+              <div><span>Agents</span><strong>04</strong></div>
+              <div><span>QGate</span><strong>98.4</strong></div>
+            </div>
+            <div className="commandDeck">
+              <div className="moduleStack">
+                <div className="moduleTile active">
+                  <span>01</span>
+                  <strong>OpenClaw Skill</strong>
+                  <p>agent orchestration</p>
+                </div>
+                <div className="moduleTile">
+                  <span>02</span>
+                  <strong>RAG Pipeline</strong>
+                  <p>recall · rerank · answer</p>
+                </div>
+              </div>
+              <div className="corePanel">
+                <HeroSystemCore />
+                <div className="nodeLabel nodeOpenClaw">OpenClaw</div>
+                <div className="nodeLabel nodeRag">RAG</div>
+                <div className="nodeLabel nodeSre">SRE</div>
+                <div className="nodeLabel nodeCicd">CI/CD</div>
+              </div>
+              <div className="insightStack">
+                <div className="miniPanel">
+                  <span>Signal Noise</span>
+                  <strong>LOW</strong>
+                  <i style={{ '--signal': '66%' }} />
+                </div>
+                <div className="miniPanel">
+                  <span>Automation</span>
+                  <strong>88%</strong>
+                  <i style={{ '--signal': '88%' }} />
+                </div>
+              </div>
             </div>
             <div className="signalGrid" aria-hidden="true">
-              <div>
-                <span>RETRIEVAL</span>
-                <i style={{ '--signal': '78%' }} />
-              </div>
-              <div>
-                <span>INCIDENT</span>
-                <i style={{ '--signal': '42%' }} />
-              </div>
-              <div>
-                <span>AUTOMATION</span>
-                <i style={{ '--signal': '88%' }} />
-              </div>
+              <div><span>RETRIEVAL</span><i style={{ '--signal': '78%' }} /></div>
+              <div><span>INCIDENT</span><i style={{ '--signal': '42%' }} /></div>
+              <div><span>AUTOMATION</span><i style={{ '--signal': '88%' }} /></div>
             </div>
             <div className="interfaceFooter">
               <span>Skill Agent</span>
