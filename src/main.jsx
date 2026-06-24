@@ -41,6 +41,10 @@ const focusAreas = [
     title: 'Pytest + Playwright + POM automation architecture',
     visual: 'automation',
   },
+  {
+    title: 'Ubuntu VPS, domain DNS and Cloudflare CDN operations',
+    visual: 'maxcompute',
+  },
 ];
 
 const projects = [
@@ -84,6 +88,16 @@ const projects = [
     accent: '04',
     visual: 'rag',
   },
+  {
+    icon: Network,
+    eyebrow: 'Cloud Network / Edge Service',
+    title: 'VrackNerd VPS 与 Cloudflare 边缘网络服务实践',
+    description:
+      '基于 VrackNerd VPS 和 Ubuntu 20.04 搭建个人云服务环境，通过 Namesilo 域名解析与 Cloudflare CDN 接入完成站点加速、防护和 DNS 管理，并维护代理服务的部署、证书、端口和基础安全配置。',
+    points: ['Ubuntu 20.04 服务部署', 'Namesilo 域名与 Cloudflare CDN', 'V2Ray 代理服务运维'],
+    accent: '05',
+    visual: 'maxcompute',
+  },
 ];
 
 const skills = [
@@ -93,10 +107,12 @@ const skills = [
   { icon: TerminalSquare, title: '运维开发', text: '使用 Python/Shell 构建巡检、日志、安全审计、数据校验和流程自动化工具。' },
   { icon: ShieldCheck, title: '质量工程', text: 'Pytest、Playwright、POM、Jenkins、Docker，建设自动化测试与质量门禁。' },
   { icon: Database, title: '大数据平台', text: '熟悉 MaxCompute、PyODPS、离线数仓和大数据平台高可用运维。' },
+  { icon: Network, title: '云网络服务', text: 'VPS、Ubuntu、Namesilo、Cloudflare CDN、DNS 解析、证书与代理服务基础运维。' },
 ];
 
 const timeline = [
   { time: '2025.12 - 至今', title: 'OpenClaw + RAG 内部智能知识平台', text: '参与平台搭建、Skill 创建、文档咨询问答系统与深度检索能力建设。' },
+  { time: '个人实践', title: 'VPS 云主机与 Cloudflare CDN 服务搭建', text: '基于 VrackNerd VPS、Ubuntu 20.04、Namesilo 域名和 Cloudflare CDN 搭建个人云服务与代理服务环境，负责 DNS、证书、端口与基础安全维护。' },
   { time: '2023 - 2024', title: '多模态智能化测试与运维平台', text: '将 Qwen3-VL 引入自动化测试，建设失败归因、视觉走查和 i18n 校验能力。' },
   { time: '2021.06 - 2024.08', title: 'MaxCompute 稳定性保障', text: '负责专有云环境下大数据平台运维开发、故障排查、客户支持与稳定性优化。' },
   { time: '2018.04 - 2020.11', title: 'DevOps CI/CD 质量门禁', text: '建设 Jenkins + GitLab 自动化门禁、回归报告分析与持续集成流程。' },
